@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen_mar25</title>
+    <script defer src="solucion.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <style type="text/css">
+        .selected-movie {
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div id="header" class="row">
+        <div id="logo" class="col-lg-12" style="background-color: rgb(179, 156, 133);"><img src="logo19_500x200.png"></div>
+    </div>
+
+    <div id="navBar" class="row" style="background-color: rgb(222, 213, 203);">
+        <nav class="navbar navbar-expand-lg" style="background-color: rgb(222, 213, 203);">
+            <div class="container-fluid">
+              <a class="navbar-brand">Film advisor</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-link" href="#">Home</a>
+                  <a class="nav-link" href="#">Recommend</a>
+                  <a class="nav-link" href="#">Profiles</a>
+                </div>
+              </div>
+            </div>
+        </nav>
+    </div>
+
+    <div id="sections">
+
+        <div id="home" class="row">
+            <h1>Home</h1>
+            <blockquote class="blockquote">This is a film advisor webapp, where you can recommend movies to your friends.</blockquote> 
+            <blockquote class="blockquote">You can also find information about the movies you like, such as their genre, rating, and release date.</blockquote>
+            <blockquote class="blockquote">If you have any questions or need help, feel free to contact us at <a href="mailto:contact@filmadvisor.com">mail</a>.</blockquote>
+        </div>
+        
+        <div id="recommend" class="row">
+            <h1>Recommend</h1>
+            <div class="col-lg-4">
+                <select id="fromSel" class="form-select">
+                    <option value="0">FROM user...</option>
+                    <!-- AQUÍ SE MUESTRAN TODOS LOS USUARIOS -->
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <select id="toSel" class="form-select" disabled>
+                    <option value="0">TO user...</option>
+                    <!-- AQUÍ SE MUESTRAN TODOS LOS USUARIOS MENOS EL SELECCIONADO EN EL ANTERIOR SELECT  -->
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <div class="input-group mb-3">
+                    <input id="movieInp" type="text" class="form-control" placeholder="recommended movie...">
+                    <div class="input-group-append">
+                        <button id="recommendBtn" class="btn btn-warning" type="button">RECOMMEND!</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group mb-3">
+                    <input id="searchInp" type="text" class="form-control" placeholder="search movies by title...">
+                    <div class="input-group-append">
+                        <button id="searchBtn" class="btn btn-warning" type="button">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div id="searchResultsDiv" class="row row-cols-md-5">
+                
+                <!-- AQUÍ SE MUESTRAN LOS RESULTADOS DE BÚSQUEDA DE PELÍCULAS -->
+            </div>
+        </div>
+
+        <div id="profiles" class="row">
+            <h1>Profiles</h1>
+            <div class="col-lg-12">
+                <select id="profileSel" class="form-select">
+                    <option value="0">select user to view his/her profile...</option>
+                </select>
+            </div>
+            <div class="row">
+                <blockquote></blockquote>
+                <div class="col-lg-2">
+                    <h5 align="right">Someone recommended you these films...</h5>
+                </div> 
+                <div class="col-lg-9">
+                    <table id="inboxTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Movie</th>
+                                <th scope="col">Genre</th>
+                                <th scope="col">Year</th>
+                                <th scope="col">Rating</th>
+                                <th scope="col">Recommended by</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                    <td>Title</td>
+                                    <td>Genre</td>
+                                    <td>Year</td>
+                                    <td>imdbRating</td>
+                                    <td>from.name</td>
+                                    <td><button class="btn btn-outline-danger">X</button></td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-2">
+                    <h5 align="right">You recommended these films...</h5>
+                </div> 
+                <div class="col-lg-9">
+                    <table id="sentTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Movie</th>
+                                <th scope="col">Genre</th>
+                                <th scope="col">Year</th>
+                                <th scope="col">Rating</th>
+                                <th scope="col">Recommended to</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                    <td>Title</td>
+                                    <td>Genre</td>
+                                    <td>Year</td>
+                                    <td>imdbRating</td>
+                                    <td>to.name</td>
+                                    <td><button class="btn btn-outline-danger">X</button></td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
+
+    </div> <!-- END sections -->
+
+    <div id="footer" class="row" style="background-color: rgb(222, 213, 203);">
+        <div class="col-lg-6">
+            <h5>Author: <!-- PON TU NOMBRE AQUÍ --></h5>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">
+              <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+            </a>
+            <br />
+              This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+        </div>
+        <div class="col-lg-6">
+            <h5>Films' data extracted from omdbapi.com</h5>
+            <a href="https://www.omdbapi.com" target="_blank">Visit omdbapi.com</a>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
