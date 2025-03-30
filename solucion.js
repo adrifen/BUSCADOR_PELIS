@@ -4,11 +4,6 @@
     // REGÍSTRATE EN OMDBAPI PARA CONSEGUIR TU PROPIA APIKEY
     
     // CASO DE USO 2: https://omdbapi.com/?apikey=xxxxxxx&i=peliculaI
-   
-  
-  
- 
-   
 // (10%) BARRA DE NAVEGACIÓN FUNCIONAL
 let enlace_home = document.querySelector(".navbar-nav a:nth-child(1)" )
 let enlace_recommend = document.querySelector(".navbar-nav a:nth-child(2)" )
@@ -132,13 +127,6 @@ usuarios_2.addEventListener("change", ()=>{
    
 })
     //cargamos los usuarios de la seccion perfiles
-
- 
-
-
-
-
-
 // (10%) BÚSQUEDA Y SELECCIÓN DE PELÍCULAS
 const button_search = document.getElementById("searchBtn")
 const name_search = document.getElementById("searchInp")
@@ -197,10 +185,7 @@ let recomendaciones = []
 const movieInput = document.getElementById("movieInp")
 const movieButton = document.getElementById("recommendBtn")
 
-
 movieButton.addEventListener("click", ()=>{
-   
-    
     if (deUsuarioID>0 && paraUsuarioID>0 && movieInput.value.trim()!="")
     {
     recomendaciones.push({})
@@ -236,6 +221,7 @@ movieButton.addEventListener("click", ()=>{
   
     perfiles.addEventListener("change", ()=>{
         elegido = perfiles.value
+        console.log(elegido)
 
         if (elegido == 0){
             borrar_tabla()
@@ -245,7 +231,7 @@ movieButton.addEventListener("click", ()=>{
         else if (elegido > 0 && elegido <=10)
         {
            borrar_tabla()
-           
+           imprimirPara(elegido-1)
         }
     
     })
@@ -304,4 +290,56 @@ movieButton.addEventListener("click", ()=>{
         columnaBoton.append(boton) 
     }
  
+    function imprimirPara(x)
+    {
+      
+        
+        recomendaciones.forEach(element=>{
+            console.log(element.fromID)
+            if (element.fromID == x)
+            {
+                console.log("no entras aqui verdad= ¡'¡'¡'")
+                const insertar = document.querySelector("#sentTable tbody")
+                let fila = document.createElement("tr")
+                insertar.append(fila)
+                let columnaTitulo = document.createElement("td")
+                columnaTitulo.textContent = element.peli
+                fila.append(columnaTitulo)
+                fila.append(document.createElement("td"))
+                fila.append(document.createElement("td"))
+                fila.append(document.createElement("td"))
+                let columnaNombre = document.createElement("td")
+                columnaNombre.textContent=element.toNombre
+                fila.append(columnaNombre)
+                let columnaBoton = document.createElement("td")
+                fila.append(columnaBoton)
+                let boton = document.createElement("button")
+                boton.className = "btn btn-outline-danger"
+                boton.textContent = " X "
+                columnaBoton.append(boton) 
+            }
+            if (element.toID == x)
+            {
+                console.log("no entras aqui verdad= ¡'¡'¡'")
+                const insertar = document.querySelector("#inboxTable tbody")
+                let fila = document.createElement("tr")
+                insertar.append(fila)
+                let columnaTitulo = document.createElement("td")
+                columnaTitulo.textContent = element.peli
+                fila.append(columnaTitulo)
+                fila.append(document.createElement("td"))
+                fila.append(document.createElement("td"))
+                fila.append(document.createElement("td"))
+                let columnaNombre = document.createElement("td")
+                columnaNombre.textContent=element.fromNombre
+                fila.append(columnaNombre)
+                let columnaBoton = document.createElement("td")
+                fila.append(columnaBoton)
+                let boton = document.createElement("button")
+                boton.className = "btn btn-outline-danger"
+                boton.textContent = " X "
+                columnaBoton.append(boton) 
+            }
+        })
+    }
 })()
