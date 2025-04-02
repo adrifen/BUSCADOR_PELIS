@@ -298,7 +298,6 @@ movieButton.addEventListener("click", ()=>{
             console.log(element.fromID)
             if (element.fromID == x)
             {
-                console.log("no entras aqui verdad= ¡'¡'¡'")
                 const insertar = document.querySelector("#sentTable tbody")
                 let fila = document.createElement("tr")
                 insertar.append(fila)
@@ -320,7 +319,6 @@ movieButton.addEventListener("click", ()=>{
             }
             if (element.toID == x)
             {
-                console.log("no entras aqui verdad= ¡'¡'¡'")
                 const insertar = document.querySelector("#inboxTable tbody")
                 let fila = document.createElement("tr")
                 insertar.append(fila)
